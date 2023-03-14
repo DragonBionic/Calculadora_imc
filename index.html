@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora IMC</title>
+    <style>
+        body {
+
+            background-color: #7D5CBC;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <center>
+        <h1>Calculadora IMC</h1>
+        <form">
+            <h1>Digite a Altura</h1>
+            <input class="inps" id="altura" type="text"></input>
+            <h1>Digite Seu peso</h1>
+            <input class="inps" id="peso" type="text"></input>
+            <select class="inps" id="sexo">
+                <option value="nada">Selecione</option>
+                <option value="mulher">Mulher</option>
+                <option value="homem">Homem</option>
+            </select>
+            </form>
+
+
+            <button class="inps" type="button" onclick="operacao()">Resultado</button>
+            <input class="inps" id="resultado" type="text" disabled></input>
+            <input class="inps" id="situacao" type="text" disabled></input>
+    </center>
+    <script>
+        function operacao() {
+            var altura, peso, resultado, situacao;
+            altura = parseFloat(document.getElementById("altura").value);
+            peso = parseFloat(document.getElementById("peso").value);
+            sexo = document.getElementById("sexo").value;
+
+            resultado = peso / (altura * altura);
+
+
+            switch (sexo) {
+                case "mulher":
+
+                    if (resultado < 19) {
+                        situacao = "Abaixo do peso";
+                    }
+
+                    else if (resultado >= 19 && resultado <= 23.9) {
+                        situacao = "Normal";
+                    }
+
+                    else if (resultado >= 24 && resultado <= 28.9) {
+                        situacao = "Obesidade leve";
+                    }
+
+                    else if (resultado >= 29 && resultado <= 38.9) {
+                        situacao = "Obesidade moderada";
+                    }
+                    else if (resultado >= 39) {
+                        situacao = "Obesidade morbida";
+                    }
+                    break;
+
+                case "homem":
+
+                    if (resultado < 20) {
+                        situacao = "Abaixo do peso";
+                    }
+
+                    else if (resultado >= 20 && resultado <= 24.9) {
+                        situacao = "Normal";
+                    }
+
+                    else if (resultado >= 25 && resultado <= 29.9) {
+                        situacao = "Obesidade Leve";
+                    }
+
+                    else if (resultado >= 30 && resultado <= 39.9) {
+                        situacao = "Obesidade Moderada";
+                    }
+                    else if (resultado >= 40) {
+                        situacao = "Obesidade Morbida";
+                    }
+                    break;
+            }
+
+
+            document.getElementById("situacao").value = situacao;
+            document.getElementById("resultado").value = resultado.toFixed(2);
+
+
+        }
+    </script>
+</body>
+
+</html>
